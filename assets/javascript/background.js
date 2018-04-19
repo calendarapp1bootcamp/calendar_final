@@ -8,7 +8,8 @@ $( document ).ready(function() {
         url: queryURL,
         method: "GET",
         headers: {
-            "Authorization": "563492ad6f917000010000010a09187d078d45bfbc9c44fcd3112f74"
+            "Authorization": "563492ad6f917000010000010a09187d078d45bfbc9c44fcd3112f74",
+            'Access-Control-Allow-Origin': '*'
         }
     }).then(function(response){
         
