@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>food finder</title>
+
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/zom.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        Navbar
+    </a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon">
+        </span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+            Home
+            <span class="sr-only">
+                (current)
+            </span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+            Link
+            </a>
+        </li>
+        <li class="nav-item dropdown">
+            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button">
+            More
+            </a>
+            <div aria-labelledby="navbarDropdown" class="dropdown-menu">
+            <a class="dropdown-item" href="foodfinder.html">
+                Find Restaurants
+            </a>
+            <a class="dropdown-item" href="#">
+                Another action
+            </a>
+            <div class="dropdown-divider">
+            </div>
+            <a class="dropdown-item" href="#">
+                Something else here
+            </a>
+            </div>
+        </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+        <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search" type="search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+            </button>
+        </input>
+        </form>
+    </div>
+</nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Top Trending</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <br><br>
+                <form class="form-horizontal" action="">
+                    <div class="form-group">
+                        <label for="cityinput">City</label>
+                        <input type="text" class="form-control" id="cityinput" placeholder="city" name="city">
+                        <label for="state">States (select one):</label>
+                        <select class="form-control" id="state" name="usa"></select>
+                        <button type="submit" id="citysubmit" class="btn btn-default">Get Them</button>
+                    </div>
+                </form>
+            </div>
+        </div>        
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <span class="text-uppercase" id="cityhelp"></span>
+                    </div>
+                </div>       
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4" id="results">       
+            </div>
+
+            <div class="modal fade foodsave" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="savemodal">
+                <div class="modal-dialog modal-sm" role="document">
+                  <div class="modal-content">
+                      <div class="modal-body">
+                          <div class="row">
+                              <div class="col-sm-4">
+                                  <h4 class="modal-title" id="savemodal">Modal title</h4>
+                                  <button type="button" class="btn btn-primary">Add Morning</button>
+                                  <button type="button" class="btn btn-primary">Add Afternoon</button>
+                                  <button type="button" class="btn btn-primary">Add Evening</button>
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                              </div>
+                          </div>
+                      </div>
+                    ...
+                  </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

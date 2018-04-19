@@ -1,0 +1,82 @@
+html {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+body {
+	background: transparent;
+}
+
+/* Event div CSS */
+.events .event {
+	display: block;
+	width: 100%;
+	margin: 10px 20px;
+
+	border-radius: 10px;
+	background-color: rgba(252, 252, 252, 0.9);
+}
+
+.events span {
+  font-family: helvetica, sans-serif;
+  opacity: 0.8;
+}
+.event div {
+	padding: 6px 16px;
+}
+.event div:nth-of-type(2) {
+	padding: 16px 16px 6px 16px;
+}
+.event div:last-of-type {
+	padding: 6px 16px 16px 16px;
+}
+.event svg {
+	margin-right: 20px;
+	opacity: 0.8;
+}
+
+.event-name {
+	background: deepskyblue;
+	border-radius: 10px 10px 0 0;
+	color: #fff;
+	font-size: 1.3rem;
+}
+
+.header {
+	width: 100%;
+	margin: 10px 20px;
+	color: #fff;
+}
+.container {
+	padding: 25px;
+}
+
+#datepicker {
+	padding: 0 12px;
+}
+#timepicker {
+	padding: 0 12px;
+}
+.header {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+
+.hotspot {
+	font-weight: bold;
+}
+
+.opendetail {
+	padding: 0 0 0 2px;
+	font-weight: bold;
+	border: 1px solid black;
+	background: white;
+}
+
+.btn-get, .btn-findfoodbtn {
+	background: gold;
+}
+
+.btn-foundfood {
+	background: greenyellow;
+	border: 1px solid black;
+}

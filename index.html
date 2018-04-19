@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Calendar App!
+    </title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="assets/css/mini-event-calendar.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/datepicker.css">
+    <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 buttons">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 sidebar">
+          <div class="calendar-container">
+            <div id="calendar">
+            </div>
+          </div>
+          <div class="form-group">
+
+            <input class="form-control my-3" id="userinput" type="text">
+
+            <!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#createEventModal">
+						  Create Event
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="createEventModal" tabindex="-1" role="dialog" aria-labelledby="createEventModal" aria-hidden="true">
+						  <div class="modal-dialog modal-dialog-centered" role="document">
+						    <div class="modal-content">
+						      <div class="modal-header">
+						        <h5 class="modal-title" id="exampleModalLongTitle">Create an Event</h5>
+						        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						          <span aria-hidden="true">&times;</span>
+						        </button>
+						      </div>
+						      <div class="modal-body">
+										<form id='createEventForm'>
+										  <div class="form-group row">
+										    <div class="col-sm-12">
+										      <input type="text" class="form-control" id="event-name" placeholder="Event Name">
+										    </div>
+										  </div>
+										  <div class="form-group row align-items-center">
+										  	<div class="col-sm-12">
+										      <input id='datepicker' type="text" placeholder="Event Date">
+										    </div>									
+										  </div>
+										  <div class="form-group row align-items-center">
+										  	<div class="col-sm-12">
+										      <input id='timepicker' type="text" placeholder="Event Time">
+										    </div>									
+										  </div>
+										  <div class="form-group row">
+										    <div class="col-sm-12">
+										      <textarea name="message" rows="10" cols="50" class="form-control" id="event-desc" style="height:160px; line-height: 1.3" placeholder="Event Description"></textarea>
+										    </div>
+										  </div>
+										</form>
+						      </div>
+						      <div class="modal-footer">
+						        <button type="button" class="btn btn-secondary" data-dismiss="modal" id='close-modal'>Close</button>
+						        <button type="submit" class="btn btn-primary" id='save-changes'>Save changes</button>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+                <input class="btn btn-success my-3" type="submit" value="Find Events">
+
+                </input>
+              </input>
+            </input>
+            <button class="btn btn-findfoodbtn" type="button" data-toggle="collapse" data-target="#findfoodinput" aria-expanded="false" aria-controls="collapseExample">
+              Find Restaurants
+            </button>
+            <div class="collapse" id="findfoodinput">
+              <div class="well">
+                Enter a city/town below for top 10 trending hotspots
+              </div>
+              <hr>
+              <form class="form-horizontal" action="">
+                  <div class="form-group hotspot">
+                      <label for="cityinput">City</label>
+                      <input type="text" class="form-control" id="cityinput" placeholder="city" name="city/town">
+                      <label for="state">State:</label>
+                      <select class="form-control" id="state" name="usa"></select>
+                      <br>
+                      <button type="submit" id="citysubmit" class="btn btn-get">Get Restaurants</button>
+                  </div>
+              </form>
+              <br>
+              <div class="panel panel-default">
+                  <div class="panel-body">
+                      <span class="text-uppercase" id="cityhelp"></span>
+                  </div>
+              </div>   
+            </div>
+            <br>
+            <div id="results"></div>
+
+
+          </div>
+        </div>
+        <div class="col-6 col-md-3 col-lg-4">
+        	<div class="row header">
+        		Today's Events
+        	</div>
+        	<div class="row events">
+            
+        		
+        	</div>
+        </div>
+        <!-- Menu of the Day container   -->
+        <div class="col-6 col-md-3 col-lg-4">
+            <div class="row header">
+              Menu of the Day
+            </div>
+            
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                </div>
+                <div class="panel-body">
+                        <div class="form-group">
+                                <label for="">Enter Food Here</label>
+                                <input type="text" class="form-control" id="breakfast">
+                                <button type="submit" class="btn btn-default" id="run-search">
+                                    <i class="fa fa-search"></i> Search</button>
+                                  <button type="button" class="btn btn-default" id="clear-all">
+                                    <i class="fa fa-trash"></i> Clear Results</button>
+                              </div>
+                              <div id="images">
+                              </div>                           
+            
+    </div>
+    <script src="assets/javascript/foodgetty.js"></script>
+    <script src="assets/javascript/foodrecipe.js"></script>
+                            
+		<script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
+		<script src="assets/javascript/firebase-connection.js"></script> 
+			
+	
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script> -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="assets/javascript/moment.js"></script>
+		<script>
+		    moment().format();
+		</script>
+		<script src="assets/javascript/mini-event-calendar.js">
+    </script>
+		<script src="assets/javascript/datepicker.js"></script>
+    <script src="assets/javascript/jquery.timepicker.js"></script>
+    <script src="assets/javascript/zom.js"></script>
+
+    <script>
+
+			$("#calendar").MEC({
+				calendar_link: "jqueryscript.net", // calendar link
+				// events: myEvents
+			});
+    </script>
+    <script src="assets/javascript/app.js">
+    </script>
+  </body>
+</html>
