@@ -1,7 +1,7 @@
 html {
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.4);
-  text-shadow: 2px 2px rgb(55, 53, 59);
+  text-shadow: 1px 1px rgb(55, 53, 59);
 }
 body {
 	
@@ -24,6 +24,7 @@ label {
 
 	border-radius: 10px;
 	background-color: rgba(252, 252, 252, 0.9);
+	text-shadow: none;
 }
 
 .events span {
