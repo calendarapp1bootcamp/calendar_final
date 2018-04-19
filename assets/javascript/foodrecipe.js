@@ -51,3 +51,7 @@ $("#run-search").on("click", function(event) {
         
     });
 });
+// $(document).ready(function() {
+//     $('body').css('background-image', 'url(https://images.pexels.com/photos/248771/pexels-photo-248771.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)');
+//     $('body').css('background-size', cover)
+// });

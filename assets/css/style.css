@@ -1,8 +1,9 @@
 html {
-  background-color: rgba(0, 0, 0, 0.4);
+  background-size: cover;
 }
 body {
 	background: transparent;
+	background-size: cover;
 }
 
 /* Event div CSS */
