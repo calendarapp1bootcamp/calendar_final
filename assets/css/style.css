@@ -1,9 +1,19 @@
 html {
   background-size: cover;
+  background-color: rgba(0, 0, 0, 0.4);
+  text-shadow: 2px 2px rgb(55, 53, 59);
 }
 body {
-	background: transparent;
+	
 	background-size: cover;
+}
+/* food css */
+label {
+	color: aliceblue;
+}
+
+.well {
+	color: aliceblue;
 }
 
 /* Event div CSS */
