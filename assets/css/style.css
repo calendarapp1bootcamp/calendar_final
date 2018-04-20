@@ -1,11 +1,12 @@
 html {
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.4);
+  /* background-color: rgba(0, 0, 0, 0.4); */
   text-shadow: 1px 1px rgb(55, 53, 59);
 }
 body {
 	
 	background-size: cover;
+	background: url(../media/cd.png)
 }
 /* food css */
 label {
