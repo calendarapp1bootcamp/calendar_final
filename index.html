@@ -87,6 +87,21 @@
             <button class="btn btn-findfoodbtn" type="button" data-toggle="collapse" data-target="#findfoodinput" aria-expanded="false" aria-controls="collapseExample">
               Find Restaurants
             </button>
+            <button class="btn btn-findwodbtn" type="button" data-toggle="collapse" data-target="#wodform1" aria-expanded="false" aria-controls="collapseExample">
+              Find Workout
+            </button>
+            <div class="collapse" id="wodform1">
+              <form class="form-horizontal" action="">
+                <div class="form-group">
+                    <div class="btn-group-toggle" data-toggle="buttons" role="group" aria-label="Basic example" id="musclelist">
+  
+                    </div>
+                    <br>
+                    <button type="submit" id="worksubmit" class="btn btn-default">Get Exercises</button>
+                </div>
+            </form>
+            </div>
+
             <div class="collapse" id="findfoodinput">
               <div class="well">
                 Enter a city/town below for top 10 trending hotspots
@@ -111,6 +126,7 @@
             </div>
             <br>
             <div id="results"></div>
+            <div id="wodresults"></div>
 
 
           </div>
@@ -168,6 +184,7 @@
 		<script src="assets/javascript/datepicker.js"></script>
     <script src="assets/javascript/jquery.timepicker.js"></script>
     <script src="assets/javascript/zom.js"></script>
+    <script src="assets/javascript/wod.js"></script>
 
     <script>
 
