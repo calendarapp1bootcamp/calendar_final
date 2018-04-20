@@ -67,18 +67,17 @@ $( window ).on( "load", function() {
   })
 
   $(document).on("click", "#worksubmit", workGetter);
-  //savemodal
-  //$("#exampleModal").on("click", "show.bs.modal", saveFoodEvent);
 
-  // $('#exampleModal').on('show.bs.modal', function (event) {
-  //   var button = $(event.relatedTarget) // Button that triggered the modal
-  //   var recipient = button.data('btnid') // Extract info from data-* attributes
-  //   console.log(button);
-  //   console.log(recipient);
-  //   var modal = $(this)
-  //   modal.find('.modal-title').text('New message to ' + recipient)
-  //   //modal.find('.modal-body input').val(recipient)
-  // })
+  $('#createEventModal').on('show.bs.modal', function (event) {
+    var eventButton = $(event.relatedTarget) // Button that triggered the modal
+    var eventName = eventButton.data('foodname') // Extract info from data-* attributes
+    var eventAddy = eventButton.data('foodaddy') // Extract info from data-* attributes
+    console.log(eventButton);
+    var modal = $(this);
+    modal.find('.modal-title').text('Add event for: ' + eventName);
+    modal.find('#event-name').val(eventName);
+    modal.find('#event-desc').val(eventAddy);
+  })
 
 });
 
@@ -173,18 +172,31 @@ function workGetter(event) {
           'id': inID,
         })
 
+        var addSavBtn = $("<button>").text("Add Event");
+
+
+
         displayHead = $("<div class='card-header'>").text( wodCat);
         displayBody = $("<div class='card-body'>");
         displayTitle = $("<h5 class='card-title'>").text( wodName);
         displayDesc = $("<p class='card-text'>").html( wodDesc );
 
+        addSavBtn.attr({
+          'data-foodname': wodCat,
+          'data-foodaddy': wodDesc,
+          'class':'btn btn-info btn-xs',
+          "data-toggle": "modal",
+          'data-target':'#createEventModal'
+        });
+
         displayCard.append(displayHead);
         displayBody.append(displayTitle);
         displayBody.append(displayDesc);
         displayCard.append(displayBody);
+        displayBody.append(addSavBtn);
         $("#wodresults").append( displayCard );
 
-        imageGetter(inID);
+
 
       //stuff.data.forEach(function(wodObject) {
         //var resultsImages = wodObject.medium_cropped.url
