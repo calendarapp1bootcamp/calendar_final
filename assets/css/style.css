@@ -92,3 +92,14 @@ label {
 	background: greenyellow;
 	border: 1px solid black;
 }
+
+.btn-findwodbtn {
+	color: white;
+	background: black;
+	border: 1px solid black;
+}
+.btn-exec {
+	color: white;
+	background: black;
+	border: 1px solid black;
+}
