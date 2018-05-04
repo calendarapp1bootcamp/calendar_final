@@ -1,34 +1,14 @@
-/*
-https://wger.de/en/user/api-key
-Your API key
-25a72c6fcb1ee3b9e5de1dd8def03a9e1a65cffa
-
-# In the request header
-Authorization: Token 25a72c6fcb1ee3b9e5de1dd8def03a9e1a65cffa
-
-# Example with curl
-curl -X GET https://wger.de/api/v2/workout/ \
-     -H 'Authorization: Token 25a72c6fcb1ee3b9e5de1dd8def03a9e1a65cffa'
-
-{id: 10, name: "Abs"}
-{id: 8, name: "Arms"}
-{id: 12, name: "Back"}
-{id: 14, name: "Calves"}
-{id: 11, name: "Chest"}
-{id: 9, name: "Legs"}
-{id: 13, name: "Shoulders"}
-*/
 
 var fail = 0;
 var eid = ""; 
 var etype = ""; 
-//var imgArrayBox = [];
 var imageOrphanArray = [];
 var wishObj = {};
 
 
 $( window ).on( "load", function() {
 
+  //list of available muscles from api
   var muscleGroup = [
     {category: 10, name: "category" , text : "Abs"},
     {category: 8, name: "category" , text : "Arms"},
@@ -39,6 +19,7 @@ $( window ).on( "load", function() {
     {category: 13, name: "category" , text :"Shoulders"}
   ];
 
+  //create buttons for each muscle group
   muscleGroup.forEach(function(element){
 
     btnText = element.text;
@@ -81,64 +62,43 @@ $( window ).on( "load", function() {
 
 });
 
-//var zomapi = a9f103698b4f0c331c939d53be137fea
-
-
+//call for exercises-ids to wger
 function workGetter(event) {
-  event.preventDefault();
 
+  event.preventDefault();
   var serialInput = $( "form" ).serialize();
   
+  //check that muscle was choosen
   if (serialInput == "") {
     alert("MUSCLE/S must be choosen");
     $("#wodhelp").text("MUSCLE/S must be choosen");
     return false;
   }
   else{
-      //var queryURL = "https://wger.de/api/v2/exercise/?language=2&status=2&";
       var queryURL = "https://wger.de/api/v2/exercise/?language=2&status=2&limit=5&";
       queryURL += serialInput;
       userChoiceDisplay = serialInput;
       $("#wodhelp").text("You entered: " + userChoiceDisplay);
   }
 
-  //console.log(serialInput);
-    //var queryURL = "https://wger.de/api/v2/exercisecategory/";
-    //var queryURL = "https://wger.de/api/v2/muscle/";
-    //var queryURL = "https://wger.de/api/v2/exerciseimage/";
-    //var queryURL = "https://wger.de/api/v2/exerciseinfo/10/";
-    //var queryURL = "https://wger.de/api/v2/exerciseimage/4/thumbnails/";
-
-    console.log(queryURL)
-  
     $.ajax({
       url: queryURL,
       method: "GET",
       headers: { "Authorization": "Token 25a72c6fcb1ee3b9e5de1dd8def03a9e1a65cffa" } 
-
     })
     .then(function(response) {
-
-      console.log("response ____1")
-      console.log(response.results)
       resultsArray = response.results;
-      
       resultsArray.forEach(function(wgerObj){
           workID = wgerObj.id;   
           getXData(workID);
-
       })
-
-
     });
   }
 
+
+  //take the exercise-ids and get exercise info
   function getXData(inID) {
     
-    //imgArrayBox.push(inUrlData);
-    // console.log("imgArrayBox");
-    // console.log(imgArrayBox.length);
-
     var searchID = inID + "/";
     var queryURL = "https://wger.de/api/v2/exerciseinfo/";
     queryURL += searchID;
@@ -149,12 +109,11 @@ function workGetter(event) {
       headers: { "Authorization": "Token 25a72c6fcb1ee3b9e5de1dd8def03a9e1a65cffa" } 
     })
     .then(function(response) {
-        //console.log("response");
-        //console.log(response);
+
+      //display results on the page
       if (Object.keys(response).length > 0){       
 
           wodObject = response;
-          //console.log(wodObject.name);
           wodName = wodObject.name;
           wodDesc = wodObject.description;
           wodCat = wodObject.category.name;
@@ -167,15 +126,11 @@ function workGetter(event) {
         }
         
         displayCard = $("<div class='card'>");
-
         displayCard.attr({
           'id': inID,
         })
 
         var addSavBtn = $("<button>").text("Add Event");
-
-
-
         displayHead = $("<div class='card-header'>").text( wodCat);
         displayBody = $("<div class='card-body'>");
         displayTitle = $("<h5 class='card-title'>").text( wodName);
@@ -195,39 +150,17 @@ function workGetter(event) {
         displayCard.append(displayBody);
         displayBody.append(addSavBtn);
         $("#wodresults").append( displayCard );
-
-
-
-      //stuff.data.forEach(function(wodObject) {
-        //var resultsImages = wodObject.medium_cropped.url
-        // var p1 = $("<p>").html(resultName + "<br/>" + resultAddy + "<br/>");
-        // p1.append(addSavBtn)
-        // restaurantData.append(p1);
-        // newFlex.append(btnData);
-        // $( btnData ).after(function() {
-        //   return restaurantData;
-        // });
-        //$("#results").append( resultsImages )
-     // })
-
     });
   }
 
+  //get images to display, NOT FUCTIONING
   function imageGetter(inImgID,) {
 
     var searchID = inImgID;
     var searchThumb = "/thumbnails/";
-   
-
-    //var queryURL = "https://wger.de/api/v2/exerciseimage/4/thumbnails/";
     var queryURL = "https://wger.de/api/v2/exerciseimage/";
-    //var queryURL = "https://wger.de/api/v2/exerciseinfo/";
-    
     queryURL += searchID;
     queryURL += searchThumb;
-
-    console.log("queryURL");
-    console.log(queryURL);
   
     $.ajax({
       url: queryURL,
@@ -235,74 +168,29 @@ function workGetter(event) {
       headers: { "Authorization": "Token 25a72c6fcb1ee3b9e5de1dd8def03a9e1a65cffa" } 
     })
     .then(function(response) {
-        console.log("response");
-        console.log(response);
 
       if (Object.keys(response).length > 0){
-        
-          //console.log(Object.keys(response).length);
-          // console.log("response = PASS");
-          // console.log(response);
           wodImageObject = response;
-          
           for (key in wodImageObject ){
               if ( key == "small_cropped"){
-                  //console.log("key");
-                  //console.log(wodImageObject[key]);
                   resultsImages = wodImageObject[key].url;
-                  //console.log(resultsImages);
-                  //imgParser(resultsImages);
                 }
             }
         }
         else {
             fail++
-            //console.log("fail: " + fail)
         }
-
-      //var newFlex = $("<div class='zom flex-grow'>");
-      
-     // stuff.data.forEach(function(wodObject) {
-        
-        // btnData = $('<button>').text(cuisines); 
-  
-        // addSavBtn.attr({
-        //   'data-btnid': resultID,
-        //   'class':'btn btn-info btn-xs',
-        //   "data-toggle": "modal",
-        //   'data-target':'.foodsave'
-        // });
-        // p1.append(addSavBtn)
-        // restaurantData.append(p1);
-        // newFlex.append(btnData);
-        // $( btnData ).after(function() {
-        //   return restaurantData;
-        // });
-        //$("#results").append( resultsImages )
-     // })
     });
   }
 
+  //get images to display, NOT FUCTIONING
   function imgParser (inUrl){
     urlStrIn = inUrl;
-    
     newUrlObj = urlStrIn.split("/", 6)
-    
     for (key in newUrlObj){
-        if (key == "5"){
-            
+        if (key == "5"){  
             idAfter = newUrlObj[key];
             newIdInt = parseInt(idAfter);        
-            console.log("urlStrIn")
-            console.log(urlStrIn)
-
-            // wishObj = {
-            //   [newIdInt] : urlStrIn
-            // }
-
-            //getXData(newIdInt, urlStrIn);
-            // console.log("wishObj")
-            // console.log(wishObj)
         }
     }
 
