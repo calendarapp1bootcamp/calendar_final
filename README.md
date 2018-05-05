@@ -1,6 +1,6 @@
 # Calendar-App
 
-This calendar application is built on extensible framework that allows developers to add search endpoints to enhance the user experience. 
+This calendar application is built on an extensible framework that allows developers to add search endpoints to enhance the user experience. 
 
 The current base calendar features include:
 1.	Create and save event by date,
